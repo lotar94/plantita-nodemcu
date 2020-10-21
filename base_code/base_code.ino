@@ -36,7 +36,7 @@ void loop() {
     valor_leido = analogRead(A0);
     variable_invertida = 1024 - valor_leido;
     porcentaje = map(variable_invertida, 0, 694, 0, 100);
-    Serial.print("Humedad del la planta en % es de =  ");
+    Serial.print("Humedad del la tierra en % es de =  ");
     Serial.print(porcentaje);
     Serial.println(" % ");
     /************************HUMEDAD DE LA TIERRA*******************************/
@@ -48,9 +48,9 @@ void loop() {
     if((err=dht11.read(humi, temp))==0)
     {
       Serial.print("temperature:");
-      Serial.print(temp);
+      Serial.println(temp);
       Serial.print(" humidity:");
-      Serial.print(humi);
+      Serial.println(humi);
       Serial.println();
     }
     else
@@ -63,7 +63,7 @@ void loop() {
     /************************TEMPERATURA Y HUMEDAD DEL AIRE*********************/
 
 
-    /***********CREACION DE JSON Y ENVIAO DE PETICION POST A SERVIDOR**********/
+    /***********CREACION DE JSON Y ENVIAO DE PETICION POST A SERVIDOR**********
     StaticJsonBuffer<300> JSONbuffer;   //Declaring static JSON buffer
     JsonObject& JSONencoder = JSONbuffer.createObject(); 
     
@@ -87,7 +87,7 @@ void loop() {
     Serial.println(payload);    //Print request response payload
  
     http.end();  //Close connection
-    /***********CREACION DE JSON Y ENVIAO DE PETICION POST A SERVIDOR**********/
+    ***********CREACION DE JSON Y ENVIAO DE PETICION POST A SERVIDOR**********/
  
   } else {
  
